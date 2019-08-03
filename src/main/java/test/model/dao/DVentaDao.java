@@ -23,7 +23,7 @@ public class DVentaDao {
 			return em.createNamedQuery("DVenta.findAll", _className).getResultList();
 		}
 
-		public DVenta findById(Long id) {
+		public DVenta findById(Integer id) {
 			return em.find(_className, id);
 		}
 

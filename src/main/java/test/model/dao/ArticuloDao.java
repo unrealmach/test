@@ -22,7 +22,7 @@ public class ArticuloDao {
 			return em.createNamedQuery("Articulo.findAll", _className).getResultList();
 		}
 
-		public Articulo findById(Long id) {
+		public Articulo findById(Integer id) {
 			return em.find(_className, id);
 		}
 
@@ -34,7 +34,10 @@ public class ArticuloDao {
 			em.persist(articulo);
 		}
 
-		public void delete(Articulo articulo) {
+		public void delete(Integer id) {
+			
+			Articulo articulo = em.find(_className, id);
+			
 			if (!em.contains(articulo)) {
 				articulo = em.merge(articulo);
 			}

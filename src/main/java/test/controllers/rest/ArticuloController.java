@@ -13,9 +13,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import test.controllers.services.ArticuloServiceImpl;
 import test.model.dao.ArticuloDao;
 import test.models.entities.Articulo;
-import test.models.entities.Todo;
 
 @RequestScoped
 @Path("articulos")
@@ -25,47 +25,40 @@ public class ArticuloController {
 
 	@Inject
 	ArticuloDao articuloDao;
+	
+	@Inject
+	ArticuloServiceImpl articuloService;
 
 	@GET
 	public Response getAll() {
-		return Response.ok(articuloDao.getAll()).build();
+		return Response.ok(articuloService.findAll()).build();
 	}
 	
 
     @GET
     @Path("{id}")
-    public Response getOne(@PathParam("id") Long id) {
-        Articulo todo = articuloDao.findById(id);
-        return Response.ok(todo).build();
+    public Response getOne(@PathParam("id") Integer id) {
+        Articulo articulo = articuloService.findOne(id);
+        return Response.ok(articulo).build();
     }
 
     @PUT
     @Path("{id}")
-    public Response update(@PathParam("id") Long id, Articulo articulo) {
-    	Articulo articuloTemp = articuloDao.findById(id);
-    	articuloTemp.setCodigo(articulo.getCodigo());
-    	articuloTemp.setNombre(articulo.getNombre());
-    	articuloTemp.setPrecioCompra(articulo.getPrecioCompra());
-    	articuloTemp.setPrecioVenta(articulo.getPrecioVenta());
-    	articuloTemp.setStock(articulo.getStock());
-    	   
-    	articuloDao.update(articuloTemp);
-
+    public Response update(@PathParam("id") Integer id, Articulo articulo) {
+    	articuloService.update(id,articulo);
         return Response.ok().build();
     }
 
     @POST
     public Response create(Articulo articulo) {
-        articuloDao.create(articulo);
+    	articuloService.save(articulo);
         return Response.ok().build();
     }
 
     @DELETE
     @Path("{id}")
-    public Response delete(@PathParam("id") Long id) {
-        Articulo articulo = articuloDao.findById(id);
-        
-        articuloDao.delete(articulo);
+    public Response delete(@PathParam("id") Integer id) {
+        articuloService.delete(id);
 
         return Response.ok().build();
     }
