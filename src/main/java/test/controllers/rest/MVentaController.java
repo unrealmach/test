@@ -1,5 +1,7 @@
 package test.controllers.rest;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -13,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import test.controllers.services.MVentaImpl;
 import test.model.dao.ArticuloDao;
 import test.model.dao.DVentaDao;
 import test.model.dao.MVentaDao;
@@ -26,53 +29,39 @@ import test.models.entities.MVenta;
 @Consumes(MediaType.APPLICATION_JSON)
 public class MVentaController {
 
-	@Inject
-	MVentaDao mVentaDao;
-	
 	@Inject 
-	DVentaService  dVentaService;
+	MVentaImpl  mVentaImpl;
 
 	@GET
 	public Response getAll() {
-		DVenta dventa  = dVentaService.findOne(1);
-//		System.out.print(dventa.toString());
-		return Response.ok(mVentaDao.getAll()).build();
+		return Response.ok(mVentaImpl.findAll()).build();
 	}
 	
 
     @GET
     @Path("{id}")
-    public Response getOne(@PathParam("id") Long id) {
-        MVenta mventa = mVentaDao.findById(id);
-        return Response.ok(mventa).build();
+    public Response getOne(@PathParam("id") Integer id) {
+        return Response.ok(mVentaImpl.findOne(id)).build();
     }
 
     @PUT
     @Path("{id}")
-    public Response update(@PathParam("id") Long id, MVenta mVenta,DVenta[] dVenta) {
-    	MVenta mVentaTemp = mVentaDao.findById(id);
-    	
-    	//check if articulo stock puede hacer la venta y no queda en 0
-    	mVentaTemp.setFecha(mVenta.getFecha());
-    	   //todo hacer la actualizacion en cascada
-    	mVentaDao.update(mVentaTemp);
-
+    public Response updateAll(@PathParam("id") Integer id, MVenta mVenta,List<DVenta> dVenta) {
+    	mVentaImpl.updateAll(id,mVenta, dVenta);
         return Response.ok().build();
     }
 
-//    @POST
-//    public Response create(Articulo articulo) {
-//        mVentaDao.create(articulo);
-//        return Response.ok().build();
-//    }
-//
-//    @DELETE
-//    @Path("{id}")
-//    public Response delete(@PathParam("id") Long id) {
-//        Articulo articulo = mVentaDao.findById(id);
-//        
-//        mVentaDao.delete(articulo);
-//
-//        return Response.ok().build();
-//    }
+    @POST
+    public Response create(MVenta mventa, List<DVenta> dventa) {
+    	mVentaImpl.saveAll(mventa, dventa);
+        return Response.ok().build();
+    }
+
+   
+    @DELETE
+    @Path("{id}")
+    public Response delete(@PathParam("id") Integer id) {
+        mVentaImpl.delete(id);
+        return Response.ok().build();
+    }
 }

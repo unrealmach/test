@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 /**
@@ -27,12 +29,13 @@ public class DVenta implements Serializable {
 	//bi-directional many-to-one association to TblArticulo
 	@ManyToOne
 	@JoinColumn(name="articulo_id")
-	@JsonBackReference
+	@JsonIgnore
 	private Articulo Articulo;
 
 	//bi-directional many-to-one association to TblMVenta
 	@ManyToOne
 	@JoinColumn(name="m_venta_id")
+	@JsonIgnore
 	private MVenta MVenta;
 
 	public DVenta() {

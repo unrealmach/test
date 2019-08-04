@@ -21,7 +21,7 @@ public class MVentaDao {
 			return em.createNamedQuery("MVenta.findAll", _className).getResultList();
 		}
 
-		public MVenta findById(Long id) {
+		public MVenta findById(Integer id) {
 			return em.find(_className, id);
 		}
 
@@ -33,12 +33,14 @@ public class MVentaDao {
 			em.persist(mVenta);
 		}
 
-		public void delete(MVenta mVenta) {
-			if (!em.contains(mVenta)) {
-				mVenta = em.merge(mVenta);
+		public void delete(Integer id) {
+			MVenta venta =this.findById(id);
+			
+			if (!em.contains(venta)) {
+				venta = em.merge(venta);
 			}
 
-			em.remove(mVenta);
+			em.remove(venta);
 		}
 	 
 

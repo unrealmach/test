@@ -2,8 +2,10 @@ package test.models.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+//import org.codehaus.jackson.annotate.JsonIgnore;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -44,24 +46,24 @@ public class Articulo implements Serializable {
 	// bi-directional many-to-one association to TblDCompra
 	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
 	// @Fetch(value = FetchMode.SUBSELECT)
-	@JsonManagedReference
+	@JsonIgnore
 	private List<DCompra> tblDCompras;
 
 	// bi-directional many-to-one association to TblDVenta
 	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
-	@JsonManagedReference
+	@JsonIgnore
 	private List<DVenta> tblDVentas;
 
 	// bi-directional many-to-one association to TblKardex
 	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
-	@JsonManagedReference
+	@JsonIgnore
 	// @Fetch(value = FetchMode.SUBSELECT)
 	private List<Kardex> tblKardexs;
 
 	// bi-directional many-to-one association to TblMarca
 	@OneToOne
 	@JoinColumn(name = "marca_id")
-	@JsonManagedReference
+	@JsonIgnore
 	private Marca tblMarca;
 
 	public Articulo() {

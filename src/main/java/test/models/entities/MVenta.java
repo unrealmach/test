@@ -2,6 +2,9 @@ package test.models.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
@@ -24,12 +27,13 @@ public class MVenta implements Serializable {
 	@Column(name="codigo_cliente")
 	private String codigoCliente;
 
-	private LocalDate fecha;
+	private String fecha;
 
 	private double total;
 
 	//bi-directional many-to-one association to TblDVenta
 	@OneToMany(mappedBy="MVenta", fetch=FetchType.EAGER)
+	@JsonIgnore
 	private List<DVenta> tblDVentas;
 
 	public MVenta() {
@@ -51,11 +55,11 @@ public class MVenta implements Serializable {
 		this.codigoCliente = codigoCliente;
 	}
 
-	public LocalDate getFecha() {
+	public String getFecha() {
 		return this.fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
