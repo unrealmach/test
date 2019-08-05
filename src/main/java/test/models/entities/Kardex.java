@@ -24,7 +24,7 @@ public class Kardex implements Serializable {
 
 	private int cantidad;
 
-	private Timestamp fecha;
+	private String fecha;
 
 	 @Enumerated(EnumType.STRING)
 	 @Column(columnDefinition = "enum('ENTRADA','SALIDA')")
@@ -33,9 +33,20 @@ public class Kardex implements Serializable {
 	private int saldo;
 
 	//bi-directional many-to-one association to TblArticulo
-	@ManyToOne
-	@JoinColumn(name="articulo_id")
+//	@ManyToOne
+//	@JoinColumn(name="articulo_id")
 	private Articulo Articulo;
+
+	
+	public Kardex(int cantidad, String fecha, TipoMovimientoEnum movimiento, int saldo,
+			test.models.entities.Articulo articulo) {
+		super();
+		this.cantidad = cantidad;
+		this.fecha = fecha;
+		this.movimiento = movimiento;
+		this.saldo = saldo;
+		Articulo = articulo;
+	}
 
 	public Kardex() {
 	}
@@ -56,11 +67,11 @@ public class Kardex implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public Timestamp getFecha() {
+	public String getFecha() {
 		return this.fecha;
 	}
 
-	public void setFecha(Timestamp fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
@@ -79,12 +90,12 @@ public void setMovimiento(TipoMovimientoEnum movimiento) {
 		this.saldo = saldo;
 	}
 
-	public Articulo getTblArticulo() {
-		return this.Articulo;
-	}
-
-	public void setTblArticulo(Articulo tblArticulo) {
-		this.Articulo = tblArticulo;
-	}
+//	public Articulo getTblArticulo() {
+//		return this.Articulo;
+//	}
+//
+//	public void setTblArticulo(Articulo tblArticulo) {
+//		this.Articulo = tblArticulo;
+//	}
 
 }

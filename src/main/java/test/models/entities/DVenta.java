@@ -64,20 +64,20 @@ public class DVenta implements Serializable {
 		this.subtotal = subtotal;
 	}
 
-//	public Articulo getTblArticulo() {
-//		return this.Articulo;
-//	}
-//
-//	public void setTblArticulo(Articulo tblArticulo) {
-//		this.Articulo = tblArticulo;
-//	}
+	public Articulo getTblArticulo() {
+		return this.Articulo;
+	}
 
-//	public MVenta getTblMVenta() {
-//		return this.MVenta;
-//	}
-//
-//	public void setTblMVenta(MVenta tblMVenta) {
-//		this.MVenta = tblMVenta;
-//	}
+	public void setTblArticulo(Articulo tblArticulo) {
+		this.Articulo = tblArticulo;
+	}
+
+	public MVenta getTblMVenta() {
+		return this.MVenta;
+	}
+
+	public void setTblMVenta(MVenta tblMVenta) {
+		this.MVenta = tblMVenta;
+	}
 
 }

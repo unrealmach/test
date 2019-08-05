@@ -12,7 +12,7 @@ public interface IDVentaService {
 	public void update(Integer id, DVenta mventa);
 	public void save(DVenta dventa);
 	
-	public void saveListDVenta(List<DVenta> dventa);
+	public void saveListDVenta(List<DVenta> dventa) throws Exception;
 
 	public void delete(Integer id);
 }

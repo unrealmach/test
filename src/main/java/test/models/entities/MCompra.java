@@ -24,13 +24,13 @@ public class MCompra implements Serializable {
 	@Column(name="codigo_cliente")
 	private String codigoCliente;
 
-	private LocalDate fecha;
+	private String fecha;
 
 	private double total;
 
 	//bi-directional many-to-one association to TblDCompra
-	@OneToMany(mappedBy="MCompra", fetch=FetchType.EAGER)
-	private List<DCompra> tblDCompras;
+//	@OneToMany(mappedBy="MCompra", fetch=FetchType.EAGER)
+//	private List<DCompra> tblDCompras;
 
 	public MCompra() {
 	}
@@ -51,11 +51,11 @@ public class MCompra implements Serializable {
 		this.codigoCliente = codigoCliente;
 	}
 
-	public LocalDate getFecha() {
+	public String getFecha() {
 		return this.fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
@@ -67,26 +67,26 @@ public class MCompra implements Serializable {
 		this.total = total;
 	}
 
-	public List<DCompra> getTblDCompras() {
-		return this.tblDCompras;
-	}
+//	public List<DCompra> getTblDCompras() {
+//		return this.tblDCompras;
+//	}
+//
+//	public void setTblDCompras(List<DCompra> tblDCompras) {
+//		this.tblDCompras = tblDCompras;
+//	}
 
-	public void setTblDCompras(List<DCompra> tblDCompras) {
-		this.tblDCompras = tblDCompras;
-	}
-
-	public DCompra addTblDCompra(DCompra tblDCompra) {
-		getTblDCompras().add(tblDCompra);
-		tblDCompra.setTblMCompra(this);
-
-		return tblDCompra;
-	}
-
-	public DCompra removeTblDCompra(DCompra tblDCompra) {
-		getTblDCompras().remove(tblDCompra);
-		tblDCompra.setTblMCompra(null);
-
-		return tblDCompra;
-	}
+//	public DCompra addTblDCompra(DCompra tblDCompra) {
+//		getTblDCompras().add(tblDCompra);
+//		tblDCompra.setTblMCompra(this);
+//
+//		return tblDCompra;
+//	}
+//
+//	public DCompra removeTblDCompra(DCompra tblDCompra) {
+//		getTblDCompras().remove(tblDCompra);
+//		tblDCompra.setTblMCompra(null);
+//
+//		return tblDCompra;
+//	}
 
 }

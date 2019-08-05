@@ -20,7 +20,7 @@ public class KardexDao {
 		return em.createNamedQuery("Kardex.findAll", _className).getResultList();
 	}
 
-	public Kardex findById(Long id) {
+	public Kardex findById(Integer id) {
 		return em.find(_className, id);
 	}
 

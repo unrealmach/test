@@ -15,48 +15,48 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import test.controllers.services.DVentaServiceImpl;
+import test.controllers.services.MCompraServiceImpl;
+import test.controllers.services.MVentaServiceImpl;
+import test.model.dao.ArticuloDao;
 import test.model.dao.DVentaDao;
 import test.model.dao.MVentaDao;
+import test.models.entities.Articulo;
+import test.models.entities.DCompra;
 import test.models.entities.DVenta;
+import test.models.entities.MCompra;
 import test.models.entities.MVenta;
 
 @RequestScoped
-@Path("dventa")
+@Path("mcompra")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class DVentaController {
-	
-	@Inject
-	DVentaServiceImpl dVentaServiceImpl;
+public class MCompraController {
+
+	@Inject 
+	MCompraServiceImpl  mCompraServiceImpl;
 
 	@GET
 	public Response getAll() {
-		return Response.ok(dVentaServiceImpl.findAll()).build();
+		return Response.ok(mCompraServiceImpl.findAll()).build();
 	}
 	
 
     @GET
     @Path("{id}")
     public Response getOne(@PathParam("id") Integer id) {
-        return Response.ok(dVentaServiceImpl.findOne(id)).build();
+        return Response.ok(mCompraServiceImpl.findOne(id)).build();
     }
 
     @PUT
     @Path("{id}")
-    public Response updateAll(@PathParam("id") Integer id,DVenta dVenta) {
-    	dVentaServiceImpl.update(id,dVenta);
+    public Response updateAll(@PathParam("id") Integer id, MCompra mCompra,List<DCompra> dCompra) {
+    	mCompraServiceImpl.updateAll(id,mCompra, dCompra);
         return Response.ok().build();
     }
-    
-  
+
     @POST
-    public Response create(List<DVenta> dventa) {
-    	try {
-			dVentaServiceImpl.saveListDVenta(dventa);
-		} catch (Exception e) {
-			return Response.ok(e.getMessage()).build();
-		}
+    public Response create(MCompra mCompra, List<DCompra> dCompra) {
+    	mCompraServiceImpl.saveAll(mCompra, dCompra);
         return Response.ok().build();
     }
 
@@ -64,8 +64,7 @@ public class DVentaController {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Integer id) {
-    	dVentaServiceImpl.delete(id);
+        mCompraServiceImpl.delete(id);
         return Response.ok().build();
     }
-	
 }
