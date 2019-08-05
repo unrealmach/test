@@ -41,9 +41,9 @@ public class MVentaImpl implements IMVenta {
 	@Override
 	public void saveAll(MVenta mventa, List<DVenta> dventa) {
 		MVenta temp = mventa;
-		temp.setTblDVentas(dventa);
+//		temp.setTblDVentas(dventa);
 		
-		mVentaDao.update(temp);
+//		mVentaDao.update(temp);
 
 	}
 

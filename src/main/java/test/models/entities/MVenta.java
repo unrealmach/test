@@ -32,9 +32,9 @@ public class MVenta implements Serializable {
 	private double total;
 
 	//bi-directional many-to-one association to TblDVenta
-	@OneToMany(mappedBy="MVenta", fetch=FetchType.EAGER)
-	@JsonIgnore
-	private List<DVenta> tblDVentas;
+//	@OneToMany(mappedBy="MVenta", fetch=FetchType.LAZY)
+//	@JsonIgnore
+//	private List<DVenta> tblDVentas;
 
 	public MVenta() {
 	}
@@ -71,26 +71,26 @@ public class MVenta implements Serializable {
 		this.total = total;
 	}
 
-	public List<DVenta> getTblDVentas() {
-		return this.tblDVentas;
-	}
+//	public List<DVenta> getTblDVentas() {
+//		return this.tblDVentas;
+//	}
+//
+//	public void setTblDVentas(List<DVenta> tblDVentas) {
+//		this.tblDVentas = tblDVentas;
+//	}
 
-	public void setTblDVentas(List<DVenta> tblDVentas) {
-		this.tblDVentas = tblDVentas;
-	}
-
-	public DVenta addTblDVenta(DVenta tblDVenta) {
-		getTblDVentas().add(tblDVenta);
-		tblDVenta.setTblMVenta(this);
-
-		return tblDVenta;
-	}
-
-	public DVenta removeTblDVenta(DVenta tblDVenta) {
-		getTblDVentas().remove(tblDVenta);
-		tblDVenta.setTblMVenta(null);
-
-		return tblDVenta;
-	}
+//	public DVenta addTblDVenta(DVenta tblDVenta) {
+//		getTblDVentas().add(tblDVenta);
+//		tblDVenta.setTblMVenta(this);
+//
+//		return tblDVenta;
+//	}
+//
+//	public DVenta removeTblDVenta(DVenta tblDVenta) {
+//		getTblDVentas().remove(tblDVenta);
+//		tblDVenta.setTblMVenta(null);
+//
+//		return tblDVenta;
+//	}
 
 }

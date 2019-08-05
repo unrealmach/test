@@ -31,7 +31,7 @@ public class Marca implements Serializable {
 	//bi-directional many-to-one association to TblArticulo
 //	@OneToMany(mappedBy="tblMarca", fetch=FetchType.LAZY)
 //	@JsonIgnore
-	private List<Articulo> tblArticulos;
+//	private List<Articulo> tblArticulos;
 
 	public Marca() {
 	}
@@ -60,26 +60,26 @@ public class Marca implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public List<Articulo> getTblArticulos() {
-		return this.tblArticulos;
-	}
+//	public List<Articulo> getTblArticulos() {
+//		return this.tblArticulos;
+//	}
+//
+//	public void setTblArticulos(List<Articulo> tblArticulos) {
+//		this.tblArticulos = tblArticulos;
+//	}
 
-	public void setTblArticulos(List<Articulo> tblArticulos) {
-		this.tblArticulos = tblArticulos;
-	}
+//	public Articulo addTblArticulo(Articulo tblArticulo) {
+//		getTblArticulos().add(tblArticulo);
+//		tblArticulo.setTblMarca(this);
+//
+//		return tblArticulo;
+//	}
 
-	public Articulo addTblArticulo(Articulo tblArticulo) {
-		getTblArticulos().add(tblArticulo);
-		tblArticulo.setTblMarca(this);
-
-		return tblArticulo;
-	}
-
-	public Articulo removeTblArticulo(Articulo tblArticulo) {
-		getTblArticulos().remove(tblArticulo);
-		tblArticulo.setTblMarca(null);
-
-		return tblArticulo;
-	}
+//	public Articulo removeTblArticulo(Articulo tblArticulo) {
+//		getTblArticulos().remove(tblArticulo);
+//		tblArticulo.setTblMarca(null);
+//
+//		return tblArticulo;
+//	}
 
 }

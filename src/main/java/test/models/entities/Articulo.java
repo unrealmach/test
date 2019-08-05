@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 //import org.codehaus.jackson.annotate.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -40,25 +41,25 @@ public class Articulo implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name = "categoria_id")
-	@JsonIgnore
+	@JsonIgnore 
 	private Categoria tblCategoria;
 
 	// bi-directional many-to-one association to TblDCompra
-	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
-	// @Fetch(value = FetchMode.SUBSELECT)
-	@JsonIgnore
-	private List<DCompra> tblDCompras;
+//	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
+//	// @Fetch(value = FetchMode.SUBSELECT)
+//	@JsonIgnore
+//	private List<DCompra> tblDCompras;
 
-	// bi-directional many-to-one association to TblDVenta
-	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<DVenta> tblDVentas;
+//	// bi-directional many-to-one association to TblDVenta
+//	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
+//	@JsonIgnore
+//	private List<DVenta> tblDVentas;
 
 	// bi-directional many-to-one association to TblKardex
-	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
-	@JsonIgnore
-	// @Fetch(value = FetchMode.SUBSELECT)
-	private List<Kardex> tblKardexs;
+//	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
+//	@JsonIgnore
+//	// @Fetch(value = FetchMode.SUBSELECT)
+//	private List<Kardex> tblKardexs;
 
 	// bi-directional many-to-one association to TblMarca
 	@OneToOne
