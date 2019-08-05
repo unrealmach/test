@@ -1,0 +1,103 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestApiTodo1",
+		"_postman_id": "506c21a9-1a8e-8d8f-2334-3fce3db3f87a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get MVenta",
+			"request": {
+				"url": "http://localhost:8080/restapi/api/mventa",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "id",
+						"value": "2",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fecha\":\"2019-01-01\",\n\t\"total\":10.0,\n\t\"codigo_cliente\":\"999999999\",\n\t \"tbl_d_venta\":{\n\t \t\"articulo_id\": 1,\n\t \t\"cantidad\": 1,\n\t \t\"subtotal\": 10.0\n\t \t\t \t\t }\n}"
+				},
+				"description": "Obtiene los datos del maestro de venta"
+			},
+			"response": []
+		},
+		{
+			"name": "Get articulos",
+			"request": {
+				"url": "http://localhost:8080/restapi/api/articulos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Obtiene todos los articulos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get dVenta",
+			"request": {
+				"url": "http://localhost:8080/restapi/api/dventa",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Obtiene todos los detalles de las ventas"
+			},
+			"response": []
+		},
+		{
+			"name": "Get One DVenta",
+			"request": {
+				"url": "http://localhost:8080/restapi/api/dventa/7",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Obtiene el registro por Id del detalle de la venta"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All MCompras",
+			"request": {
+				"url": "http://localhost:8080/restapi/api/mcompra/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Obtiene todos los maestros de compra"
+			},
+			"response": []
+		},
+		{
+			"name": "Get one MCompra",
+			"request": {
+				"url": "http://localhost:8080/restapi/api/mcompra/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Obtiene una Mcompra por Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Kardex",
+			"request": {
+				"url": "http://localhost:8080/restapi/api/kardex",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Obtiene todos los regisstros del kardex"
+			},
+			"response": []
+		}
+	]
+}
