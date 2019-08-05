@@ -15,45 +15,44 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import test.controllers.services.MVentaServiceImpl;
-import test.model.dao.ArticuloDao;
+import test.controllers.services.DVentaServiceImpl;
 import test.model.dao.DVentaDao;
 import test.model.dao.MVentaDao;
-import test.models.entities.Articulo;
 import test.models.entities.DVenta;
 import test.models.entities.MVenta;
 
 @RequestScoped
-@Path("mventa")
+@Path("dventa")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class MVentaController {
-
-	@Inject 
-	MVentaServiceImpl  mVentaImpl;
+public class DVentaController {
+	
+	@Inject
+	DVentaServiceImpl dVentaServiceImpl;
 
 	@GET
 	public Response getAll() {
-		return Response.ok(mVentaImpl.findAll()).build();
+		return Response.ok(dVentaServiceImpl.findAll()).build();
 	}
 	
 
     @GET
     @Path("{id}")
     public Response getOne(@PathParam("id") Integer id) {
-        return Response.ok(mVentaImpl.findOne(id)).build();
+        return Response.ok(dVentaServiceImpl.findOne(id)).build();
     }
 
     @PUT
     @Path("{id}")
-    public Response updateAll(@PathParam("id") Integer id, MVenta mVenta,List<DVenta> dVenta) {
-    	mVentaImpl.updateAll(id,mVenta, dVenta);
+    public Response updateAll(@PathParam("id") Integer id,DVenta dVenta) {
+    	dVentaServiceImpl.update(id,dVenta);
         return Response.ok().build();
     }
-
+    
+  
     @POST
-    public Response create(MVenta mventa, List<DVenta> dventa) {
-    	mVentaImpl.saveAll(mventa, dventa);
+    public Response create(List<DVenta> dventa) {
+    	dVentaServiceImpl.saveListDVenta(dventa);
         return Response.ok().build();
     }
 
@@ -61,7 +60,8 @@ public class MVentaController {
     @DELETE
     @Path("{id}")
     public Response delete(@PathParam("id") Integer id) {
-        mVentaImpl.delete(id);
+    	dVentaServiceImpl.delete(id);
         return Response.ok().build();
     }
+	
 }

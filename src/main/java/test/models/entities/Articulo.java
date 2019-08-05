@@ -52,8 +52,8 @@ public class Articulo implements Serializable {
 
 //	// bi-directional many-to-one association to TblDVenta
 //	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)
-//	@JsonIgnore
-//	private List<DVenta> tblDVentas;
+	@JsonIgnore
+	private List<DVenta> tblDVentas;
 
 	// bi-directional many-to-one association to TblKardex
 //	@OneToMany(mappedBy = "Articulo", fetch = FetchType.LAZY)

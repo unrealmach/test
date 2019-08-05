@@ -6,7 +6,7 @@ import java.util.List;
 import test.models.entities.DVenta;
 import test.models.entities.MVenta;
 
-public interface IMVenta {
+public interface IMVentaService {
 
 	public MVenta findOne(Integer id);
 	

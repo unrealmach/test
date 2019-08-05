@@ -28,8 +28,8 @@ public class DVenta implements Serializable {
 
 	//bi-directional many-to-one association to TblArticulo
 	@ManyToOne
-//	@JoinColumn(name="articulo_id")
-	@JsonIgnore
+	@JoinColumn(name="articulo_id")
+//	@JsonIgnore
 	private Articulo Articulo;
 
 	//bi-directional many-to-one association to TblMVenta
@@ -64,13 +64,13 @@ public class DVenta implements Serializable {
 		this.subtotal = subtotal;
 	}
 
-	public Articulo getTblArticulo() {
-		return this.Articulo;
-	}
-
-	public void setTblArticulo(Articulo tblArticulo) {
-		this.Articulo = tblArticulo;
-	}
+//	public Articulo getTblArticulo() {
+//		return this.Articulo;
+//	}
+//
+//	public void setTblArticulo(Articulo tblArticulo) {
+//		this.Articulo = tblArticulo;
+//	}
 
 //	public MVenta getTblMVenta() {
 //		return this.MVenta;

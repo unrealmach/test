@@ -11,7 +11,7 @@ import test.models.entities.DVenta;
 import test.models.entities.MVenta;
 
 @RequestScoped
-public class MVentaImpl implements IMVenta {
+public class MVentaServiceImpl implements IMVentaService {
 
 	@Inject
 	MVentaDao mVentaDao;

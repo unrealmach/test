@@ -35,11 +35,8 @@ public class DVentaDao {
 			em.persist(dVenta);
 		}
 
-		public void delete(DVenta dVenta) {
-			if (!em.contains(dVenta)) {
-				dVenta = em.merge(dVenta);
-			}
-
+		public void delete(Integer id) {
+			DVenta dVenta = em.find(_className, id);
 			em.remove(dVenta);
 		}
 	 
